@@ -1,6 +1,6 @@
 ---
-title: "동시성 문제"
-date: 2024-06-25T16:01:00
+title: "Concurrency"
+date: 2024-07-02T16:10:52
 categories: ['OS']
 tags: ['OS', 'CS']
 ---
