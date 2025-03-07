@@ -40,27 +40,27 @@
 > System call
 > 운영체제 커널의 함수를 호출하는 것을 의미한다.
 
-io 접근 은 mode bit 이 0 일때만 가능하다. 따라서 사용자 프로그램은 io 작업이 필요한 경우 io 요청을 하며 interrupt 를 발생시킨다. 즉 system call 이 실행되면서interrupt 를 발생시킨다.
+io 접근 은 mode bit 이 0 일때만 가능하다. 따라서 사용자 프로그램은 io 작업이 필요한 경우 io 요청을 하며 interrupt 를 발생시킨다. 즉 system call 이 실행되면서 interrupt 를 발생시킨다.
 
 ![](/assets/images/interrupt_2.png)
 cpu 는 다음 명령을 수행하기전 interrupt line 을 통해 interrupt 발생 여부를 확인한다. 사용자 프로그램이 io 를 위해 interrupt 를 발생시켰기 때문에 cpu 의 제어권은 kernel 에게 넘어가며 mode bit 은 0 으로 바뀐다. 이후 kernel 은 device controller 에게 IO 작업 요청을 한다. 
+그리고 기존 실행중이던 Process 는 Blocked 상태로 변한다.
 
 ![](/assets/images/interrupt_3.png)
 
 kernel 은 IO 작업 요청을 한뒤 modebit 을 1로 바꾼 뒤 다른 process 에게 CPU 점유권을 넘긴다.
-![[Pasted image 20250305171416.png]]
-시간이 지나 io 작업이 완료된 경우 device controller 는 cpu 에게 interrupt 를 보낸다. 
 
 ![](/assets/images/interrupt_4.png)
+시간이 지나 io 작업이 완료된 경우 device controller 는 cpu 에게 interrupt 를 보낸다. 
+
 
 다른 작업을 수행중이던 cpu 는 명령이 끝난 뒤 interrupt line 을 확인하여 device controller 가 보낸 interrupt 를 감지한 뒤 mode bit 을 0으로 바꾼뒤 kernel 에게 cpu 제어권을 넘긴다. 
 
-kernel 은 interrupt 의 출처를 확인한 뒤 이전 io 를 요청했던 프로세스의 메모리 영역에 io 결과를 copy 해준다. 이후 process 에게 다시 제어권을 넘긴다.
-
+kernel 은 interrupt 의 출처를 확인한 뒤 이전 io 를 요청했던 프로세스의 메모리 영역에 io 결과를 copy 해준다.
 
 ![](/assets/images/interrupt_5.png)
 
-요청 프로세스의 메모리 영역에 IO 결과가 복사된 후, 해당 System call 이후의 명령들이 수행된다.
+요청 프로세스의 메모리 영역에 IO 결과가 복사된 후 IO 를 요청했던 User Process 1 은 Ready 상태로 바뀌게 되며, 기존 실행하던 User Process 2 가 다시 실행된다.
 
 ### Timer Interrupt
 
