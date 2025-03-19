@@ -157,7 +157,7 @@ timer interrupt 를 예시로 interrupt 가 발생했을 경우 어떻게 comput
 
 시간이 만료될 경우, Timer 는 Interrup를 발생시킵니다.
 
-**5. kerenl 복귀**
+**5. kernel 복귀**
 
 ![changeKernel](/assets/images/os/computer_system_architecture/changeKernel.png)
 
