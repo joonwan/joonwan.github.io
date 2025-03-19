@@ -1,12 +1,17 @@
 {% if site.posts.size > 0 %}
-  <ul>
-    {% for post in site.posts %}
-      <li class="post-list-item">
-        <span class="home-date">
-          {{ post.date | date: site.theme_config.date_format }}»
-        </span>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+{% assign grouped_posts = site.posts | group_by_exp: "post", "post.tags | first" %}
+
+{% for tag in grouped_posts %}
+  <div class="blog-section">
+    <h2>#{{ tag.name }}</h2>
+    <ul class="blog-list">
+      {% for post in tag.items %}
+        <li>
+          <span class="blog-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endfor %}
 {% endif %}
