@@ -1,7 +1,7 @@
 ---
 layout: post
 author: joonwan
-tags: [os]
+tags: [OS]
 title: Computer System Architecure & Interrupt
 ---
 
