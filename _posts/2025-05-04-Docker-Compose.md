@@ -2,7 +2,7 @@
 layout: post
 author: joonwan
 tags: [Docker]
-title: Docker - Compose
+title: Docker - DockerCompose
 ---
 
 # Docker Compose 란?
