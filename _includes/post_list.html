@@ -1,17 +1,60 @@
-{% if site.posts.size > 0 %}
-{% assign grouped_posts = site.posts | group_by_exp: "post", "post.tags | first" %}
+<!-- 태그 필터 바 -->
+<div id="tag-filter-bar" class="tag-filter-bar">
+  <button class="tag-btn active" data-tag="all">전체</button>
+  {% assign all_tags = site.tags | sort %}
+  {% for tag in all_tags %}
+    <button class="tag-btn" data-tag="{{ tag[0] }}">🔖 {{ tag[0] }}</button>
+  {% endfor %}
+</div>
 
-{% for tag in grouped_posts %}
-  <div class="blog-section">
-    <h2>#{{ tag.name }}</h2>
-    <ul class="blog-list">
-      {% for post in tag.items %}
-        <li>
-          <span class="blog-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-          <a href="{{ post.url }}">{{ post.title }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-{% endfor %}
-{% endif %}
+<!-- 포스트 목록 -->
+<div id="post-list-container">
+  {% assign grouped_posts = site.posts | group_by_exp: "post", "post.tags | first" %}
+  {% for tag in grouped_posts %}
+    <div class="blog-section" data-tag="{{ tag.name }}">
+      <h2 class="tag-header">🔖 {{ tag.name }}</h2>
+      <div class="blog-card-grid">
+        {% for post in tag.items %}
+          <div class="blog-card">
+            {% if post.image %}
+              <img src="{{ post.image }}" alt="{{ post.title }}" class="blog-thumbnail">
+            {% endif %}
+            <span class="blog-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            <h3 class="blog-title">
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            </h3>
+            <p class="blog-excerpt">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tagBtns = document.querySelectorAll('.tag-btn');
+    const sections = document.querySelectorAll('.blog-section');
+  
+    tagBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        tagBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+  
+        const selectedTag = this.getAttribute('data-tag');
+        if (selectedTag === 'all') {
+          sections.forEach(section => section.style.display = '');
+        } else {
+          sections.forEach(section => {
+            if (section.getAttribute('data-tag') === selectedTag) {
+              section.style.display = '';
+            } else {
+              section.style.display = 'none';
+            }
+          });
+        }
+      });
+    });
+  });
+  </script>
+  

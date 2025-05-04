@@ -1,6 +1,114 @@
 ---
 ---
-
 @import "moonwalk";
 @import "list";
 @import "syntax";
+
+/* 태그 필터 바 */
+.tag-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+.tag-btn {
+  border: none;
+  background: #f4f4f4;
+  color: #333;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s;
+  &.active,
+  &:hover {
+    background: #333;
+    color: #fff;
+  }
+}
+
+/* 카드형 UI */
+.blog-section {
+  margin-bottom: 3rem;
+}
+.tag-header {
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+.blog-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.blog-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  transition: transform 0.2s;
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+.blog-thumbnail {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 0.8rem;
+}
+.blog-date {
+  display: block;
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.blog-title {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+.blog-excerpt {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 0.5rem 0 0;
+}
+
+/* 다크 모드 스타일 (추가된 부분) */
+html[data-theme="dark"] {
+  .tag-filter-bar {
+    border-bottom: 1px solid #444;
+  }
+  .tag-btn {
+    background: #222;
+    color: #bbb;
+    &:hover,
+    &.active {
+      background: #fff;
+      color: #222;
+    }
+  }
+  .blog-section {
+    .tag-header {
+      color: #fff;
+      border-bottom: 2px solid #444;
+    }
+  }
+  .blog-card {
+    background: #222;
+    color: #eee;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+  }
+  .blog-date {
+    color: #bbb;
+  }
+  .blog-title a {
+    color: #fff;
+  }
+  .blog-excerpt {
+    color: #bbb;
+  }
+}
