@@ -1,0 +1,21 @@
+{
+    "name": "Moonwalk Blog (Ruby)",
+    "image": "mcr.microsoft.com/devcontainers/ruby:0-3.0-bullseye",
+    
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        }
+    },
+
+    "forwardPorts": [
+        4000
+    ],
+
+    // === 2. postCreateCommand에서 Claude CLI 설치 제거 ===
+    "postCreateCommand": "apt-get update && apt-get install -y dos2unix && dos2unix bin/bootstrap && dos2unix bin/start && chmod +x bin/bootstrap bin/start && ./bin/bootstrap",
+    // === 2번 수정 끝 ===
+
+    "remoteUser": "root"
+}
