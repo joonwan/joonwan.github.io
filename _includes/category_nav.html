@@ -1,0 +1,21 @@
+{% assign categories = site.posts | map: 'category' | uniq | sort %}
+
+<div class="category-nav">
+  <div class="search-wrapper">
+    <div class="category-label">Search:</div>
+    <input type="text" id="search-input" class="search-input" placeholder="Search posts..." />
+    <button id="clear-search" class="clear-search" style="display: none;">✕</button>
+  </div>
+
+  <div class="category-wrapper">
+    <div class="category-label">Categories:</div>
+    <div class="category-filter">
+      <button class="category-btn active" data-category="all">All</button>
+      {% for category in categories %}
+        {% if category %}
+          <button class="category-btn" data-category="{{ category }}">{{ category }}</button>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

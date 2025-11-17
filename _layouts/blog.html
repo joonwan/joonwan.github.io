@@ -7,4 +7,8 @@ layout: default
   <h1>{{ site.title }}</h1>
 </header>
 
+{% include category_nav.html %}
+
 {% include post_list.html %}
+
+<script src="{{ "/assets/js/category-filter.js" | relative_url }}"></script>

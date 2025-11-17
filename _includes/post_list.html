@@ -1,11 +1,14 @@
 {% if site.posts.size > 0 %}
-  <ul>
+  <ul id="post-list">
     {% for post in site.posts %}
-      <li class="post-list-item">
+      <li class="post-list-item" data-category="{{ post.category | default: 'uncategorized' }}">
         <span class="home-date">
           {{ post.date | date: site.theme_config.date_format }}»
         </span>
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        {% if post.category %}
+          <span class="post-category">{{ post.category }}</span>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
