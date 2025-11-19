@@ -37,10 +37,13 @@ li { margin: 0.4em 0; }
   padding: 4em 2em;
 }
 
-table, th, td {
+table {
   width: 100%;
-  border: thin solid black;
   border-collapse: collapse;
+}
+
+th, td {
+  border: thin solid black;
   padding: 0.4em;
 }
 
@@ -49,6 +52,63 @@ div.highlighter-rouge pre code, pre code.highlighter-rouge {
   overflow-x: auto;
   padding: 1em;
 }
+
+// Code block language label
+div[class*="language-"] {
+  position: relative;
+  margin-top: 2em;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1.5em;
+    left: 0;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 0.2em 0.8em;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 0.3em;
+    font-family: "Roboto Mono", "Courier New", monospace;
+  }
+}
+
+.language-python::before { content: "Python"; }
+.language-javascript::before { content: "JavaScript"; }
+.language-js::before { content: "JavaScript"; }
+.language-typescript::before { content: "TypeScript"; }
+.language-ts::before { content: "TypeScript"; }
+.language-java::before { content: "Java"; }
+.language-cpp::before { content: "C++"; }
+.language-c::before { content: "C"; }
+.language-csharp::before { content: "C#"; }
+.language-go::before { content: "Go"; }
+.language-rust::before { content: "Rust"; }
+.language-ruby::before { content: "Ruby"; }
+.language-php::before { content: "PHP"; }
+.language-swift::before { content: "Swift"; }
+.language-kotlin::before { content: "Kotlin"; }
+.language-scala::before { content: "Scala"; }
+.language-r::before { content: "R"; }
+.language-sql::before { content: "SQL"; }
+.language-html::before { content: "HTML"; }
+.language-css::before { content: "CSS"; }
+.language-scss::before { content: "SCSS"; }
+.language-sass::before { content: "Sass"; }
+.language-json::before { content: "JSON"; }
+.language-yaml::before { content: "YAML"; }
+.language-yml::before { content: "YAML"; }
+.language-xml::before { content: "XML"; }
+.language-markdown::before { content: "Markdown"; }
+.language-md::before { content: "Markdown"; }
+.language-bash::before { content: "Bash"; }
+.language-sh::before { content: "Shell"; }
+.language-shell::before { content: "Shell"; }
+.language-powershell::before { content: "PowerShell"; }
+.language-text::before { content: "Text"; }
+.language-plaintext::before { content: "Plain Text"; }
+.language-txt::before { content: "Text"; }
 
 blockquote {
   font-style: italic;
@@ -367,5 +427,81 @@ p code, li code {
 
   .search-input {
     font-size: 0.85em;
+  }
+}
+
+// -------- GITHUB ALERTS STYLES -------- //
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border-left: 0.25rem solid;
+  border-radius: 0.5rem;
+  background-color: var(--bg-secondary);
+
+  .markdown-alert-title {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+
+    &:before {
+      display: inline-block;
+      margin-right: 0.5rem;
+      font-size: 1rem;
+    }
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  &.markdown-alert-note {
+    border-left-color: #3b82f6;
+    .markdown-alert-title {
+      color: #3b82f6;
+      &:before {
+        content: "ℹ️";
+      }
+    }
+  }
+
+  &.markdown-alert-tip {
+    border-left-color: #10b981;
+    .markdown-alert-title {
+      color: #10b981;
+      &:before {
+        content: "💡";
+      }
+    }
+  }
+
+  &.markdown-alert-important {
+    border-left-color: #8b5cf6;
+    .markdown-alert-title {
+      color: #8b5cf6;
+      &:before {
+        content: "❗";
+      }
+    }
+  }
+
+  &.markdown-alert-warning {
+    border-left-color: #f59e0b;
+    .markdown-alert-title {
+      color: #f59e0b;
+      &:before {
+        content: "⚠️";
+      }
+    }
+  }
+
+  &.markdown-alert-caution {
+    border-left-color: #ef4444;
+    .markdown-alert-title {
+      color: #ef4444;
+      &:before {
+        content: "🔴";
+      }
+    }
   }
 }
