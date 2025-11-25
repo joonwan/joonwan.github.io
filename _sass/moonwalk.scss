@@ -432,75 +432,84 @@ p code, li code {
 
 // -------- GITHUB ALERTS STYLES -------- //
 .markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  border-left: 0.25rem solid;
+  padding: 1em;
+  margin: 1em 0;
+  border: 1px solid var(--text-secondary);
+  border-left: 0.25rem solid var(--text-secondary);
   border-radius: 0.5rem;
   background-color: var(--bg-secondary);
 
   .markdown-alert-title {
-    display: flex;
-    align-items: center;
+    font-family: "Roboto Mono", "Courier New", monospace;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5em;
+    color: var(--headings);
 
     &:before {
       display: inline-block;
-      margin-right: 0.5rem;
-      font-size: 1rem;
+      margin-right: 0.5em;
+      font-style: normal;
+      font-weight: bold;
     }
   }
 
-  p:last-child {
-    margin-bottom: 0;
+  p {
+    margin: 0.4em 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &.markdown-alert-note {
-    border-left-color: #3b82f6;
+    border-left-color: var(--links);
     .markdown-alert-title {
-      color: #3b82f6;
+      color: var(--links);
       &:before {
-        content: "ℹ️";
+        content: "[i]";
       }
     }
   }
 
   &.markdown-alert-tip {
-    border-left-color: #10b981;
+    border-left-color: var(--links);
     .markdown-alert-title {
-      color: #10b981;
+      color: var(--links);
       &:before {
-        content: "💡";
+        content: "[+]";
       }
     }
   }
 
   &.markdown-alert-important {
-    border-left-color: #8b5cf6;
+    border-left-color: var(--headings);
     .markdown-alert-title {
-      color: #8b5cf6;
+      color: var(--headings);
       &:before {
-        content: "❗";
+        content: "[!]";
       }
     }
   }
 
   &.markdown-alert-warning {
-    border-left-color: #f59e0b;
+    border-left-color: var(--text-secondary);
     .markdown-alert-title {
-      color: #f59e0b;
+      color: var(--text);
       &:before {
-        content: "⚠️";
+        content: "[*]";
       }
     }
   }
 
   &.markdown-alert-caution {
-    border-left-color: #ef4444;
+    border-left-color: var(--text);
     .markdown-alert-title {
-      color: #ef4444;
+      color: var(--text);
       &:before {
-        content: "🔴";
+        content: "[x]";
       }
     }
   }
