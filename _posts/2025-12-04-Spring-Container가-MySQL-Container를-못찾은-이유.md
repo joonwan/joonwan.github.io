@@ -141,6 +141,6 @@ docker compose up -d
 docker compose up -d --build  # 빌드 + 실행
 ```
 
-느낀점
+# 느낀점
 
 사실 이 모든 문제가 docker 그리고 docker compose 의 기본 동작원리를 제대로 이해하지 못해서 발생한 문제였던것 같습니다. 앞으로 docker container 가 어떤 식으로 동작하는지, compose 의 각 키워드는 어떤것을 나타내고 어떻게 동작하는지 깊게 학습할 것입니다.
