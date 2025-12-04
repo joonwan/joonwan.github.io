@@ -54,6 +54,8 @@ div.highlighter-rouge pre code, pre code.highlighter-rouge {
 }
 
 // Code block language label
+// Commented out to hide language labels on code blocks
+/*
 div[class*="language-"] {
   position: relative;
   margin-top: 2em;
@@ -109,6 +111,7 @@ div[class*="language-"] {
 .language-text::before { content: "Text"; }
 .language-plaintext::before { content: "Plain Text"; }
 .language-txt::before { content: "Text"; }
+*/
 
 blockquote {
   font-style: italic;
