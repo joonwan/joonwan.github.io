@@ -1,15 +1,11 @@
 title: Joonwan Tech Blog
-author: Abhinav Saxena
+author: Joonwan Jeon
 url: https://joonwan.github.io # root address of the site
 description: > # description of the site (multiple lines allowed)
-  기술 블로그.
+  지식 및 경험 정리 블로그
 permalink: /:slug
 
 favicon: "./logo.png" # relative path to site's favicon
-
-twitter:
-    username: abhinav # update or delete this
-    card: summary_large_image
 
 #theme: moonwalk # if you are using GitHub Pages, change it to remote_theme: abhinavs/moonwalk
 remote_theme: abhinavs/moonwalk
