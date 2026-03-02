@@ -1,6 +1,6 @@
 title: Joonwan Tech Blog
 author: Abhinav Saxena
-url: https://www.abhinavsaxena.com/moonwalk # root address of the site
+url: https://joonwan.github.io # root address of the site
 description: > # description of the site (multiple lines allowed)
   기술 블로그.
 permalink: /:slug
@@ -48,3 +48,4 @@ sass:
 plugins:
   - jekyll-feed
   - jekyll-soopr-seo-tag
+  - jekyll-sitemap

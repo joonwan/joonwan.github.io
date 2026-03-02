@@ -153,7 +153,7 @@ decrby counter 9
 (integer) 90
 ```
 
-> [!tip]
+> [!TIP]
 > string 자료구조에 저장할 수 있는 정수 최대값은 9223372036854775807 (약 922 경) 입니다. 이 상태에서 incr 명령을 할 경우  `(error) ERR increment or decrement would overflow` error 가 발생합니다. 
 > 최소값도 마찬가지로 -9223372036854775808 (약 -922 경) `decr` 명령을 할 경우 `(error) ERR increment or decrement would overflow` 에러가 발생합니다.
  
