@@ -2,7 +2,7 @@
 layout: post
 author: joonwan jeon
 tags: [Redis, data structure]
-category: databse
+category: database
 ---
 
 # Redis string
