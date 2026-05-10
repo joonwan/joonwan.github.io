@@ -1,101 +1,38 @@
 navbar_entries:
-  - title: about
+  - title: About
     url: about
 
-  - title: blog
+  - title: Blog
     url: blog
 
-  - title: github
+  - title: GitHub
     url: https://github.com/joonwan
 
+topic_entries:
+  - title: Backend
+    url: /blog?category=backend
+    desc: Spring, Redis, Docker 같은 백엔드 기술과 설계, 데이터 처리, 트러블슈팅을 다룹니다.
+
+  - title: Infra
+    url: /blog?category=infra
+    desc: Linux, Docker, Nginx, Jenkins 같은 인프라 환경과 운영 경험을 정리합니다.
+
+  - title: System Programming
+    url: /blog?category=system-programming
+    desc: OS, concurrency, I/O model, thread, mutex, condition variable 같은 low-level 주제를 다룹니다.
+
 project_entries:
-  - title: Project 1
-    url: overview-post
-    desc: This is an example project, configured in _data/home.yml
+  - title: carryporter
+    url: https://github.com/joonwan/carryporter
+    desc: Spring Boot, Redis, MQTT, ROS2 기반으로 사용자 앱, 관리자 대시보드, 로봇 제어를 연결한 AIoT 서비스 프로젝트
 
-  - title: Project 2
-    url: overview-post
-    desc: Projects are shown in card layout
-
-  - title: Project 3
-    url: overview-post
-    desc: You can control visibility from _config.yml file
-
-  - title: Project 4
-    url: overview-post
-    desc: This project uses highlight markup, configured in _data/home.yml
-    highlight: WIP
-
-  - title: Project 5
-    url: overview-post
-    desc: Moonwalk also has horizontal list (used in header and footer)
-    highlight: WIP
-
-  - title: Project 6
-    url: overview-post
-    desc: It also has a scalable vertical list (in case you need it)
-
-old_project_entries:
-  - title: Soopr
-    url: https://www.soopr.co
-    desc: Delight your readers - add beautiful share and like buttons easily to your websites 
-    highlight: NEW
-
-  - title: Cookie
-    url: https://github.com/abhinavs/cookie
-    desc: An open source landing website with supporting pages and integrated blog
-
-  - title: Moonwalk
-    url: https://github.com/abhinavs/moonwalk
-    desc: A fast and minimalist Jekyll blog theme with clean dark mode
-
-  - title: Humangous
-    url: https://www.humangous.co
-    desc: The better people know you, the better they collaborate
+  - title: I/O Internals Lab
+    url: https://github.com/joonwan/io-internals-c
+    desc: blocking/non-blocking, select, kqueue, AIO를 C로 직접 구현하며 I/O 모델을 실험한 시스템 프로그래밍 프로젝트
 
 footer_entries:
-  - title: abhinav's homepage
-    url: https://www.abhinav.co
-
-  - title: twitter
-    url: https://twitter.com/abhinav
-
   - title: github
     url: https://github.com/joonwan
 
   - title: feed
     url: feed.xml
-
-misc_entries:
-  - title: this is an example vertical list
-    url: false
-
-  - title: you can show or hide using a boolean flag in _config.yml
-    url: false
-
-  - title: and you can add data in _data/home.yml
-    url: false
-
-  - title: Blog posts
-    post_list: true
-    url: false
-
-  - title: moonwalk on the Internet
-    url: false
-    entries:
-      - title: on Github
-        url: https://github.com/abhinavs/moonwalk
-
-      - title: originally built for abhinav's homepage
-        url: https://www.abhinav.co
-
-      - title: this list is scalable and can be nested
-        url: false
-        entries:
-          - title: this is nested inside a nested list
-            url: false
-
-          - title: it is easy to use, see _data/home.yml to see how to configure it.
-            url: false
-
-

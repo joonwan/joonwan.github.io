@@ -13,7 +13,26 @@
       <button class="category-btn active" data-category="all">All</button>
       {% for category in categories %}
         {% if category %}
-          <button class="category-btn" data-category="{{ category }}">{{ category }}</button>
+          {% assign category_label = category | replace: '-', ' ' %}
+          {% if category == 'backend' %}
+            {% assign category_label = 'Backend' %}
+          {% elsif category == 'infra' %}
+            {% assign category_label = 'Infra' %}
+          {% elsif category == 'system-programming' %}
+            {% assign category_label = 'System Programming' %}
+          {% else %}
+            {% assign words = category_label | split: ' ' %}
+            {% assign category_label = '' %}
+            {% for word in words %}
+              {% assign capitalized = word | capitalize %}
+              {% if forloop.first %}
+                {% assign category_label = capitalized %}
+              {% else %}
+                {% assign category_label = category_label | append: ' ' | append: capitalized %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          <button class="category-btn" data-category="{{ category }}">{{ category_label }}</button>
         {% endif %}
       {% endfor %}
     </div>

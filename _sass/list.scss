@@ -1,6 +1,5 @@
 ul.horizontal-list {
   display: flex;
-  //justify-content: space-between;
   margin-top: 0em;
   margin-left: -40px;
   flex-wrap: wrap;
@@ -12,7 +11,7 @@ ul.horizontal-list {
 
   li a {
     text-decoration: none;
-    font-weight: normal
+    font-weight: 700;
   }
 
 }

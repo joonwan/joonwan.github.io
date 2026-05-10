@@ -1,8 +1,8 @@
 ---
 layout: post
 author: joonwan jeon
-tags: [operating system]
-category: operating system
+tags: [os, system-structure]
+category: system-programming
 ---
 
 # Computer System Structure 

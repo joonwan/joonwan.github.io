@@ -1,8 +1,8 @@
 ---
 layout: post
 author: joonwan jeon
-tags: [Redis, data structure]
-category: database
+tags: [redis, data-structure]
+category: backend
 ---
 
 # Redis list

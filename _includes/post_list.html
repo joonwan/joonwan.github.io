@@ -1,13 +1,36 @@
 {% if site.posts.size > 0 %}
   <ul id="post-list">
-    {% for post in site.posts %}
+    {% assign posts = site.posts %}
+    {% if include.limit %}
+      {% assign posts = site.posts | slice: 0, include.limit %}
+    {% endif %}
+    {% for post in posts %}
       <li class="post-list-item" data-category="{{ post.category | default: 'uncategorized' }}">
         <span class="home-date">
           {{ post.date | date: site.theme_config.date_format }}»
         </span>
         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
         {% if post.category %}
-          <span class="post-category">{{ post.category }}</span>
+          {% assign category_label = post.category | replace: '-', ' ' %}
+          {% if post.category == 'backend' %}
+            {% assign category_label = 'Backend' %}
+          {% elsif post.category == 'infra' %}
+            {% assign category_label = 'Infra' %}
+          {% elsif post.category == 'system-programming' %}
+            {% assign category_label = 'System Programming' %}
+          {% else %}
+            {% assign words = category_label | split: ' ' %}
+            {% assign category_label = '' %}
+            {% for word in words %}
+              {% assign capitalized = word | capitalize %}
+              {% if forloop.first %}
+                {% assign category_label = capitalized %}
+              {% else %}
+                {% assign category_label = category_label | append: ' ' | append: capitalized %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          <span class="post-category">{{ category_label }}</span>
         {% endif %}
       </li>
     {% endfor %}

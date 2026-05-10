@@ -9,33 +9,26 @@ layout: default
 {% endif %}
 
   <h1>{{ site.title }}</h1>
-  {% if site.theme_config.show_description == true %}
-    <p>{{ site.description }}</p>
-  {% endif %}
+  <p><strong>Backend, Infra, System Programming을 공부하고 기록합니다.</strong></p>
+  <p>Spring, Redis, Docker 같은 백엔드 기술과 OS, concurrency, I/O model 같은 low-level 주제를 함께 다룹니다.</p>
 </header>
 
 {{ content }}
 
-{% if site.theme_config.show_projects == true %}
-  <h2>{{ site.theme_config.home.title_projects }}</h2>
-  {% include card_list.html collection=site.data.home.project_entries %}
+{% if site.data.home.topic_entries %}
+  <h2>What I Write About</h2>
+  {% include card_list.html collection=site.data.home.topic_entries %}
 {% endif %}
 
-{% if site.theme_config.show_misc_list == true %}
-  <h2>{{ site.theme_config.home.title_misc_list }}</h2>
-  {% include vertical_list.html collection=site.data.home.misc_entries %}
+{% if site.data.home.project_entries %}
+  <h2>Featured Projects</h2>
+  {% include card_list.html collection=site.data.home.project_entries %}
 {% endif %}
 
 {% if site.theme_config.show_blog == true %}
   <h2>Recent Posts</h2>
-  {% include post_list.html %}
+  {% include post_list.html limit=3 %}
 {% endif %}
-
-{% if site.theme_config.show_old_projects == true %}
-  <h2>{{ site.theme_config.home.title_old_projects }}</h2>
-  {% include card_list.html collection=site.data.home.old_project_entries %}
-{% endif %}
-
 
 {% if site.theme_config.show_footer == true %}
   <footer>

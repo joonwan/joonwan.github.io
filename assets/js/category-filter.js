@@ -4,9 +4,31 @@ document.addEventListener('DOMContentLoaded', function() {
   const searchInput = document.getElementById('search-input');
   const clearButton = document.getElementById('clear-search');
   const postList = document.getElementById('post-list');
+  const params = new URLSearchParams(window.location.search);
 
-  let currentCategory = 'all';
+  let currentCategory = params.get('category') || 'all';
   let currentSearchTerm = '';
+
+  const validCategories = new Set(Array.from(categoryButtons).map(button => button.getAttribute('data-category')));
+  if (!validCategories.has(currentCategory)) {
+    currentCategory = 'all';
+  }
+
+  function syncCategoryButtons() {
+    categoryButtons.forEach(button => {
+      button.classList.toggle('active', button.getAttribute('data-category') === currentCategory);
+    });
+  }
+
+  function syncCategoryQuery() {
+    const url = new URL(window.location);
+    if (currentCategory === 'all') {
+      url.searchParams.delete('category');
+    } else {
+      url.searchParams.set('category', currentCategory);
+    }
+    window.history.replaceState({}, '', url);
+  }
 
   // Filter posts based on both category and search
   function filterPosts() {
@@ -18,10 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const postCategoryText = post.querySelector('.post-category')?.textContent.toLowerCase() || '';
       const searchText = postTitle + ' ' + postCategoryText;
 
-      // Check category filter
       const categoryMatch = currentCategory === 'all' || postCategory === currentCategory;
-
-      // Check search filter
       const searchMatch = currentSearchTerm === '' || searchText.includes(currentSearchTerm.toLowerCase());
 
       if (categoryMatch && searchMatch) {
@@ -32,11 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Show "no results" message if needed
     updateNoResultsMessage(visibleCount);
   }
 
-  // Update or create "no results" message
   function updateNoResultsMessage(visibleCount) {
     let noResultsMsg = document.querySelector('.no-results');
 
@@ -48,32 +65,24 @@ document.addEventListener('DOMContentLoaded', function() {
         postList.parentNode.insertBefore(noResultsMsg, postList.nextSibling);
       }
       noResultsMsg.style.display = 'block';
-    } else {
-      if (noResultsMsg) {
-        noResultsMsg.style.display = 'none';
-      }
+    } else if (noResultsMsg) {
+      noResultsMsg.style.display = 'none';
     }
   }
 
-  // Category button click handler
   categoryButtons.forEach(button => {
     button.addEventListener('click', function() {
       currentCategory = this.getAttribute('data-category');
-
-      // Update active button
-      categoryButtons.forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
-
+      syncCategoryButtons();
+      syncCategoryQuery();
       filterPosts();
     });
   });
 
-  // Search input handler
   if (searchInput) {
     searchInput.addEventListener('input', function() {
       currentSearchTerm = this.value;
 
-      // Show/hide clear button
       if (currentSearchTerm) {
         clearButton.style.display = 'block';
       } else {
@@ -84,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Clear search button handler
   if (clearButton) {
     clearButton.addEventListener('click', function() {
       searchInput.value = '';
@@ -94,4 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
       searchInput.focus();
     });
   }
+
+  syncCategoryButtons();
+  filterPosts();
 });
