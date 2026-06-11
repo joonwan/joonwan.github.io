@@ -2,7 +2,35 @@
 layout: default
 ---
 
-<a href="{{ "/" | relative_url }}">{{ site.theme_config.back_home_text }}</a>
-<h1 class="post-title">{{ page.title }}</h1>
-{% include date_and_social_share.html %}
-{{ content }}
+{% if page.show_meta == false %}
+  <section class="page-shell page-shell-static">
+    <nav class="post-top-nav" aria-label="Page navigation">
+      <a class="back-link" href="{{ "/" | relative_url }}">← Joon Lab</a>
+    </nav>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {{ content }}
+  </section>
+{% else %}
+  <article class="post-shell">
+    <header class="post-header">
+      <nav class="post-top-nav" aria-label="Post navigation">
+        <a class="back-link" href="{{ "/" | relative_url }}">← Joon Lab</a>
+        <a class="section-link" href="{{ "/blog" | relative_url }}">← Blog</a>
+      </nav>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% include date_and_social_share.html %}
+    </header>
+    <div class="post-layout">
+      <div class="post-body" id="post-body">
+        {{ content }}
+      </div>
+      <aside class="post-sidebar" aria-label="Table of contents">
+        <div class="post-toc-card" id="post-toc-card" hidden>
+          <p class="post-toc-label">On this page</p>
+          <nav class="post-toc" id="post-toc"></nav>
+        </div>
+      </aside>
+    </div>
+  </article>
+  <script src="{{ "/assets/js/post-toc.js" | relative_url }}"></script>
+{% endif %}

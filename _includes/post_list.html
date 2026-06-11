@@ -6,32 +6,34 @@
     {% endif %}
     {% for post in posts %}
       <li class="post-list-item" data-category="{{ post.category | default: 'uncategorized' }}">
-        <span class="home-date">
-          {{ post.date | date: site.theme_config.date_format }}»
-        </span>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        {% if post.category %}
-          {% assign category_label = post.category | replace: '-', ' ' %}
-          {% if post.category == 'backend' %}
-            {% assign category_label = 'Backend' %}
-          {% elsif post.category == 'infra' %}
-            {% assign category_label = 'Infra' %}
-          {% elsif post.category == 'system-programming' %}
-            {% assign category_label = 'System Programming' %}
-          {% else %}
-            {% assign words = category_label | split: ' ' %}
-            {% assign category_label = '' %}
-            {% for word in words %}
-              {% assign capitalized = word | capitalize %}
-              {% if forloop.first %}
-                {% assign category_label = capitalized %}
+        <a class="post-list-link" href="{{ post.url | relative_url }}">
+          <span class="post-list-meta">
+            <span class="home-date">{{ post.date | date: site.theme_config.date_format }}</span>
+            {% if post.category %}
+              {% assign category_label = post.category | replace: '-', ' ' %}
+              {% if post.category == 'backend' %}
+                {% assign category_label = 'Backend' %}
+              {% elsif post.category == 'infra' %}
+                {% assign category_label = 'Infra' %}
+              {% elsif post.category == 'system-programming' %}
+                {% assign category_label = 'System Programming' %}
               {% else %}
-                {% assign category_label = category_label | append: ' ' | append: capitalized %}
+                {% assign words = category_label | split: ' ' %}
+                {% assign category_label = '' %}
+                {% for word in words %}
+                  {% assign capitalized = word | capitalize %}
+                  {% if forloop.first %}
+                    {% assign category_label = capitalized %}
+                  {% else %}
+                    {% assign category_label = category_label | append: ' ' | append: capitalized %}
+                  {% endif %}
+                {% endfor %}
               {% endif %}
-            {% endfor %}
-          {% endif %}
-          <span class="post-category">{{ category_label }}</span>
-        {% endif %}
+              <span class="post-category">{{ category_label }}</span>
+            {% endif %}
+          </span>
+          <span class="post-list-title">{{ post.title }}</span>
+        </a>
       </li>
     {% endfor %}
   </ul>

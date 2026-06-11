@@ -1,31 +1,26 @@
-<p class="post-date text-bold">
-  {% if page.author %}
-    <span class="text-upcase">{{ page.author }}</span> / 
-  {% endif %}
-  {% if page.date %}
-    <span class="text-upcase">{{ page.date | date: "%B %Y"}}</span>
-  {% endif %}
+<div class="post-meta">
+  <p class="post-date">
+    {% if page.author %}
+      <span class="post-meta-item">{{ page.author }}</span>
+    {% endif %}
+    {% if page.date %}
+      <span class="post-meta-item">{{ page.date | date: "%B %Y"}}</span>
+    {% endif %}
+    {% if site.theme_config.show_reading_time == true %}
+      {% capture words %}
+      {{ content | number_of_words | minus: 180 }}
+      {% endcapture %}
+      {% unless words contains '-' %}
+        <span class="post-meta-item">{{ words | plus: 180 | divided_by: 180 }} min read</span>
+      {% endunless %}
+    {% endif %}
+  </p>
 
-{% if site.theme_config.show_reading_time == true %}
-  {% capture words %}
-  {{ content | number_of_words | minus: 180 }}
-  {% endcapture %}
-  {% unless words contains '-' %}
-  {{ words | strip | prepend: '(' | append: ' Words, ' }}
-  {{ words | plus: 180 | divided_by: 180 | append: ' Minutes)' }}
-  {% endunless %}
-{% endif %}
-</p>
-
-<div class="soopr-btn"
-   data-twitter="SooprCo"
->
+  {% if site.theme_config.show_tags == true and page.tags and page.tags.size > 0 %}
+    <div class="post-tag-list">
+      {% for tag in page.tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
 </div>
-
-{% if site.theme_config.show_tags == true %}
-  <div class="">
-    {% for tag in page.tags %}
-    <span class="tag">{{ tag }}</span>
-    {% endfor %}
-  </div>
-{% endif %}

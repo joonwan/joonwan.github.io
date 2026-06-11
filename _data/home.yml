@@ -8,6 +8,48 @@ navbar_entries:
   - title: GitHub
     url: https://github.com/joonwan
 
+home_entries:
+  - title: About
+    url: about
+    desc: 개발자로서의 이력과 기술 스택
+    icon: user
+
+  - title: Projects
+    url: "#featured-projects"
+    desc: 프로젝트에서 마주한 고민과 결과
+    icon: layers
+
+  - title: Blog
+    url: blog
+    desc: 공부하며 정리한 기술 기록
+    icon: document
+
+featured_projects:
+  - title: CarryPorter
+    role: Backend Leader
+    desc: 실시간 로봇 호출 서비스의 이벤트 기반 배차 흐름과 동시성 제어를 설계했습니다.
+    tags: [Spring Boot, MQTT, Redis, Lua]
+
+  - title: Oh My Guide
+    role: Infra Engineer
+    desc: 배포 자동화와 로그·메트릭 관측 환경을 구축해 운영 병목을 줄였습니다.
+    tags: [Jenkins, Docker, Grafana, Loki]
+
+  - title: 오손도손
+    role: Team Leader
+    desc: 수어-음성 양방향 번역 플랫폼의 디바이스-클라우드 연동 서버를 개발했습니다.
+    tags: [FastAPI, Spring, JPA, WebSocket]
+
+focus_entries:
+  - title: Backend
+    desc: 요청 흐름, 트랜잭션, 데이터 처리, 서비스 구조
+
+  - title: Infra
+    desc: 배포 자동화, 운영 환경, 로그와 메트릭 관측
+
+  - title: System
+    desc: OS, concurrency, I/O model, 시스템 내부 동작
+
 topic_entries:
   - title: Backend
     url: /blog?category=backend

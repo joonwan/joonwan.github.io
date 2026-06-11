@@ -1,43 +1,69 @@
 ul.horizontal-list {
   display: flex;
-  margin-top: 0em;
-  margin-left: -40px;
+  margin: 0;
+  padding: 0;
   flex-wrap: wrap;
+  gap: 0.7em;
 
   li {
     display:inline;
-    margin-right: 1em;
+    margin: 0;
   }
 
   li a {
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 600;
   }
 
 }
 
+header > ul.horizontal-list {
+  margin-bottom: 1.2em;
+
+  li a {
+    color: var(--text-secondary);
+    font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+    font-size: 0.78em;
+    text-transform: uppercase;
+  }
+
+  li a:hover {
+    color: var(--links);
+  }
+}
+
 .card {
-  padding: 1em;
-  border: 1px var(--text) solid;
-  width: 11em;
+  padding: 1.05em;
+  border: 1px var(--border) solid;
+  width: 13em;
   height: auto;
-  text-align: center;
+  text-align: left;
   font-size: 1em;
   align-items: center;
-  background-color: var(--bg-secondary);
-  margin-bottom: 0.8em;
-  border-radius: 0.5em;
+  background-color: color-mix(in srgb, var(--surface) 84%, transparent);
+  margin-bottom: 0.2em;
+  border-radius: 0.45em;
+  transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--links);
+    background-color: var(--surface);
+    transform: translateY(-2px);
+  }
 
   .header {
-    color: var(--links);
+    color: var(--headings);
+    font-size: 0.95em;
   }
 
   .body {
-    font-size: 0.8em;
+    color: var(--text-secondary);
+    font-size: 0.82em;
+    line-height: 1.65;
   }
 
   hr {
-    margin: 0.5em 0;
+    margin: 0.65em 0;
   }
 
 }
@@ -47,8 +73,7 @@ ul.horizontal-list {
   ul.horizontal-list li.card {
     width: 100%;
     display: block;
-    margin-bottom: 1em;
-    margin-left: 1em;
+    margin-bottom: 0.7em;
     a, .header {
       font-size: 1em;
     }

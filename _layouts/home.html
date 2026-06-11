@@ -3,35 +3,32 @@ layout: default
 ---
 
 <header>
-{% if site.theme_config.show_navbar == true %}
-  {% include horizontal_list.html collection=site.data.home.navbar_entries %}
-  <div class="dashed"></div>
-{% endif %}
-
   <h1>{{ site.title }}</h1>
-  <p><strong>Backend, Infra, System Programming을 공부하고 기록합니다.</strong></p>
-  <p>Spring, Redis, Docker 같은 백엔드 기술과 OS, concurrency, I/O model 같은 low-level 주제를 함께 다룹니다.</p>
+  <p><strong>개발자로서의 실험, 프로젝트, 기록을 모아둔 공간입니다.</strong></p>
 </header>
 
 {{ content }}
 
-{% if site.data.home.topic_entries %}
-  <h2>What I Write About</h2>
-  {% include card_list.html collection=site.data.home.topic_entries %}
-{% endif %}
-
-{% if site.data.home.project_entries %}
-  <h2>Featured Projects</h2>
-  {% include card_list.html collection=site.data.home.project_entries %}
-{% endif %}
-
-{% if site.theme_config.show_blog == true %}
-  <h2>Recent Posts</h2>
-  {% include post_list.html limit=3 %}
-{% endif %}
-
-{% if site.theme_config.show_footer == true %}
-  <footer>
-    <div class="dashed"></div>
-  </footer>
+{% if site.data.home.home_entries %}
+  <section class="home-section">
+    <div class="home-link-grid">
+      {% for item in site.data.home.home_entries %}
+        <a class="home-link-panel" href="{{ item.url | relative_url }}">
+          <span class="home-link-title">
+            {{ item.title }}
+            <span class="home-link-icon" aria-hidden="true">
+              {% if item.icon == "user" %}
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c1.4-4 4-6 7-6s5.6 2 7 6"></path></svg>
+              {% elsif item.icon == "layers" %}
+                <svg viewBox="0 0 24 24"><path d="M12 4 4 8l8 4 8-4-8-4Z"></path><path d="m4 13 8 4 8-4"></path><path d="m4 18 8 4 8-4"></path></svg>
+              {% elsif item.icon == "document" %}
+                <svg viewBox="0 0 24 24"><path d="M7 3h7l3 3v15H7V3Z"></path><path d="M14 3v4h4"></path><path d="M10 11h5"></path><path d="M10 15h5"></path></svg>
+              {% endif %}
+            </span>
+          </span>
+          <span class="home-link-desc">{{ item.desc }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
 {% endif %}

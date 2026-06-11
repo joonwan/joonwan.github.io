@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     postItems.forEach(post => {
       const postCategory = post.getAttribute('data-category');
-      const postTitle = post.querySelector('a').textContent.toLowerCase();
+      const postTitle = post.querySelector('.post-list-title')?.textContent.toLowerCase() || '';
       const postCategoryText = post.querySelector('.post-category')?.textContent.toLowerCase() || '';
       const searchText = postTitle + ' ' + postCategoryText;
 
