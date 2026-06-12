@@ -1502,6 +1502,78 @@ p code, li code {
   font-size: 0.9em;
 }
 
+@media screen and (max-width: 980px) {
+  .home-hero,
+  .home-highlights {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .home-hero {
+    min-height: auto;
+    padding-top: 1.4rem;
+  }
+
+  .home-hero-nav {
+    margin-top: 0.2rem;
+  }
+
+  .home-link-panel {
+    padding: 0.95rem 0;
+  }
+
+  .home-highlights {
+    margin-top: 0.6rem;
+    margin-bottom: 3rem;
+  }
+
+  .home-feature-card {
+    padding: 1.1rem 1.15rem;
+  }
+
+  .home-mini-item {
+    padding: 0.85rem 0;
+  }
+
+  .page-shell-static {
+    max-width: 100%;
+  }
+
+  .project-card,
+  .project-hero,
+  .project-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-card {
+    padding: 1rem 0 0.95rem;
+  }
+
+  .project-card-image img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .project-card-body h2 {
+    font-size: 1.24rem;
+  }
+
+  .project-card-summary,
+  .project-page-summary {
+    font-size: 0.97rem;
+  }
+
+  .project-overview-item {
+    padding-right: 0;
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 76%, transparent);
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
 @media screen and (max-width: 600px) {
   .w {
     padding: 4.5em 1.25em;
