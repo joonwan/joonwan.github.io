@@ -1,0 +1,27 @@
+items:
+  - title: CarryPorter
+    slug: carryporter
+    period: 2026.01 - 2026.02
+    role: Backend Leader
+    summary: 보행 약자를 위한 호출형 로봇 서비스의 백엔드 아키텍처와 배차 흐름을 설계했습니다.
+    description: 이벤트 기반 비동기 흐름 분리, MQTT 기반 실시간 메시징, Redis/Lua 기반 동시성 제어를 중심으로 구조를 다듬었습니다.
+    image: /assets/images/projects/carryporter.png
+    tags: [Spring Boot, MQTT, Redis, Lua]
+
+  - title: Oh My Guide
+    slug: oh-my-guide
+    period: 2026.02 - 2026.04
+    role: Infra Engineer
+    summary: 외국인 대상 여행 가이드 서비스의 배포 자동화와 운영 관측성을 개선했습니다.
+    description: Jenkins/Docker 기반 CI/CD 자동화, 이미지 경량화, Loki/Prometheus/Grafana 기반 모니터링 환경을 구축했습니다.
+    image: /assets/images/projects/oh-my-guide.png
+    tags: [Jenkins, Docker, Grafana, Loki]
+
+  - title: 오손도손
+    slug: osondoson
+    period: 2026.04 - 2026.05
+    role: Team Leader / Backend Engineer
+    summary: 수어와 음성을 실시간 대화로 연결하는 양방향 번역 서비스의 서버 구조를 설계했습니다.
+    description: WebSocket 기반 상태 관리, FastAPI 연동, 공통 응답·예외 스키마 설계를 통해 서비스 연결 흐름을 정리했습니다.
+    image: /assets/images/projects/osondoson.png
+    tags: [Spring Boot, FastAPI, JPA, WebSocket]

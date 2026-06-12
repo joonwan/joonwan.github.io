@@ -63,10 +63,12 @@ show_meta: false
 
 ## Projects
 
+<p class="about-projects-link"><a href="{{ '/projects' | relative_url }}">See all projects</a></p>
+
 <section class="about-timeline">
   <article class="about-entry">
     <div class="about-entry-head">
-      <h3>CarryPorter</h3>
+      <h3><a href="{{ '/projects/carryporter' | relative_url }}">CarryPorter</a></h3>
       <p>보행 약자를 위한 호출형 로봇 서비스</p>
       <span>2026.01 - 2026.02</span>
     </div>
@@ -80,7 +82,7 @@ show_meta: false
 
   <article class="about-entry">
     <div class="about-entry-head">
-      <h3>Oh My Guide</h3>
+      <h3><a href="{{ '/projects/oh-my-guide' | relative_url }}">Oh My Guide</a></h3>
       <p>외국인 대상 여행 가이드 서비스</p>
       <span>2026.02 - 2026.04</span>
     </div>
@@ -94,7 +96,7 @@ show_meta: false
 
   <article class="about-entry">
     <div class="about-entry-head">
-      <h3>오손도손</h3>
+      <h3><a href="{{ '/projects/osondoson' | relative_url }}">오손도손</a></h3>
       <p>수어와 음성을 실시간 대화로 연결하는 양방향 번역 서비스</p>
       <span>2026.04 - 2026.05</span>
     </div>

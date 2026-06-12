@@ -2,16 +2,15 @@
 layout: default
 ---
 
-<header>
-  <h1>{{ site.title }}</h1>
-  <p><strong>개발자로서의 실험, 프로젝트, 기록을 모아둔 공간입니다.</strong></p>
-</header>
+<section class="home-hero">
+  <div class="home-hero-copy">
+    <p class="home-kicker">Work, Study, Record</p>
+    <h1>{{ site.title }}</h1>
+    <p class="home-intro">개발하며 진행한 실험 · 프로젝트 · 트러블슈팅, 그리고 그 과정에서 배운 내용을 기록하는 공간입니다.</p>
+  </div>
 
-{{ content }}
-
-{% if site.data.home.home_entries %}
-  <section class="home-section">
-    <div class="home-link-grid">
+  {% if site.data.home.home_entries %}
+    <div class="home-hero-nav">
       {% for item in site.data.home.home_entries %}
         <a class="home-link-panel" href="{{ item.url | relative_url }}">
           <span class="home-link-title">
@@ -30,5 +29,46 @@ layout: default
         </a>
       {% endfor %}
     </div>
-  </section>
-{% endif %}
+  {% endif %}
+</section>
+
+{{ content }}
+
+<section class="home-highlights">
+  <div class="home-spotlight">
+    <div class="section-heading">
+      <h2>Featured Project</h2>
+      <span class="section-kicker">Project</span>
+    </div>
+    {% assign featured = site.data.home.featured_projects | first %}
+    {% if featured %}
+      <a class="home-feature-card" href="{{ "/about#projects" | relative_url }}">
+        <span class="home-feature-role">{{ featured.role }}</span>
+        <h3>{{ featured.title }}</h3>
+        <p>{{ featured.desc }}</p>
+        {% if featured.tags %}
+          <div class="home-feature-tags">
+            {% for tag in featured.tags limit: 4 %}
+              <span>{{ tag }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </a>
+    {% endif %}
+  </div>
+
+  <div class="home-latest">
+    <div class="section-heading">
+      <h2>Recent Writing</h2>
+      <span class="section-kicker">Notes</span>
+    </div>
+    <div class="home-mini-list">
+      {% for post in site.posts limit: 2 %}
+        <a class="home-mini-item" href="{{ post.url | relative_url }}">
+          <span class="home-date">{{ post.date | date: "%Y.%m.%d" }}</span>
+          <strong>{{ post.title }}</strong>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
