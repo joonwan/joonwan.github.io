@@ -1941,8 +1941,72 @@ p code, li code {
     linear-gradient(180deg, color-mix(in srgb, var(--surface-muted) 18%, transparent), transparent 72%),
     color-mix(in srgb, var(--surface) 84%, transparent);
   overflow-x: auto;
+  cursor: zoom-in;
+
+  &:focus-visible {
+    outline: 1px solid color-mix(in srgb, var(--links) 70%, transparent);
+    outline-offset: 3px;
+  }
 }
 
 .mermaid {
   min-width: 40rem;
+}
+
+.mermaid-lightbox-open {
+  overflow: hidden;
+}
+
+.mermaid-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: color-mix(in srgb, #000 72%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.mermaid-lightbox[hidden] {
+  display: none;
+}
+
+.mermaid-lightbox-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--border) 84%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--headings);
+  font-family: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+}
+
+.mermaid-lightbox-inner {
+  width: 92vw;
+  max-width: 1200px;
+  max-height: 88vh;
+  padding: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-muted) 20%, transparent), transparent 72%),
+    color-mix(in srgb, var(--surface) 94%, transparent);
+  overflow: auto;
+}
+
+.mermaid-lightbox-stage {
+  min-width: max-content;
+
+  svg {
+    width: auto;
+    max-width: none;
+    height: auto;
+    margin: 0 auto;
+  }
 }
