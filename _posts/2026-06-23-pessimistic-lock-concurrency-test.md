@@ -318,6 +318,61 @@ Spring Data JPA의 `save`, `saveAndFlush` 같은 repository 변경 메서드는 
 
 반대로 기존 구조처럼 테스트 클래스에 `@Transactional`이 걸려 있으면 repository 메서드는 새로운 트랜잭션을 만들지 않고 기존 테스트 트랜잭션에 참여합니다. 그래서 테스트 메서드가 끝나기 전까지 commit되지 않습니다.
 
+수정 후 로그에서도 setup 데이터가 실제 commit되는 것을 확인할 수 있었습니다.
+
+먼저 `@BeforeEach` 시점에 테스트 트랜잭션이 활성화되어 있지 않았습니다.
+
+```text
+2026-06-10T23:06:23.141+09:00  INFO ... RobotServiceConcurrencyTest : setup 로직 시작
+2026-06-10T23:06:23.141+09:00  INFO ... RobotServiceConcurrencyTest : BeforeEach active = false
+2026-06-10T23:06:23.141+09:00  INFO ... RobotServiceConcurrencyTest : 테스트용 사용자와 미션 저장
+```
+
+이후 `saveAndFlush()` 호출 시 repository 메서드가 자체적으로 트랜잭션을 생성했습니다.
+
+```text
+Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.saveAndFlush]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.saveAndFlush]
+```
+
+그리고 `users` insert 후 바로 commit이 발생했습니다.
+
+```sql
+insert
+into
+    users
+    (created_at, updated_at, username)
+values
+    (?, ?, ?)
+```
+
+```text
+Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.saveAndFlush]
+Initiating transaction commit
+Committing JPA transaction on EntityManager [SessionImpl(1338252474<open>)]
+committing
+```
+
+`missions` 저장도 동일하게 insert 후 commit되었습니다.
+
+```sql
+insert
+into
+    missions
+    (created_at, mission_status, robot_id, updated_at, user_id)
+values
+    (?, ?, ?, ?, ?)
+```
+
+```text
+Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.saveAndFlush]
+Initiating transaction commit
+Committing JPA transaction on EntityManager [SessionImpl(873287880<open>)]
+committing
+```
+
+즉, 테스트 클래스 레벨의 `@Transactional`을 제거한 뒤에는 setup 데이터가 repository 메서드 단위 트랜잭션으로 실제 commit되었습니다. 그래서 `ExecutorService`의 별도 스레드에서 실행된 서비스 트랜잭션도 해당 데이터를 정상적으로 조회할 수 있었습니다.
+
 ---
 
 ## 변경된 트랜잭션 경계
