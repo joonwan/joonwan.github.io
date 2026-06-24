@@ -2,7 +2,7 @@
 layout: post
 author: joonwan jeon
 tags: [algorithm]
-category: system-programming
+category: concept
 ---
 
 # Floyd Warshall 알고리즘

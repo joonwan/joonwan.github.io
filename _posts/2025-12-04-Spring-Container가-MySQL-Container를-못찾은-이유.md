@@ -2,7 +2,7 @@
 layout: post
 author: joonwan jeon
 tags: [docker, docker-compose, troubleshooting]
-category: infra
+category: troubleshooting
 ---
 
 # 내 Spring Container 가 MySQL Container 를 못찾은 이유

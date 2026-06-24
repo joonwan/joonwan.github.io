@@ -2,7 +2,7 @@
 layout: post
 author: joonwan jeon
 tags: [os, system-structure]
-category: system-programming
+category: concept
 ---
 
 # Computer System Structure 

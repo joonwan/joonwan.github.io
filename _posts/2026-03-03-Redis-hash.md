@@ -2,7 +2,7 @@
 layout: post
 author: joonwan jeon
 tags: [redis, data-structure]
-category: backend
+category: concept
 ---
 
 # Redis hash

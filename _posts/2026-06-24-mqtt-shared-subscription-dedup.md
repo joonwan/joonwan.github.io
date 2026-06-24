@@ -2,7 +2,7 @@
 layout: post
 author: joonwan jeon
 tags: [spring, mqtt, mosquitto, deduplication, idempotency, scale-out, troubleshooting]
-category: spring
+category: troubleshooting
 ---
 
 # MQTT 메시지가 멀티 인스턴스에서 두 번 처리된 이유

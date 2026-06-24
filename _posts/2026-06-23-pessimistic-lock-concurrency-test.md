@@ -2,7 +2,7 @@
 layout: post
 author: joonwan jeon
 tags: [spring, jpa, transaction, testcontainers, concurrency, troubleshooting]
-category: spring
+category: troubleshooting
 ---
 
 # 비관적 락 동시성 테스트가 실패한 이유: `saveAndFlush()`와 `commit`은 다르다

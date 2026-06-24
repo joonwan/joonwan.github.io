@@ -2,7 +2,7 @@
 layout: post
 author: joonwan jeon
 tags: [spring, sse, redis, pubsub, scale-out, troubleshooting]
-category: spring
+category: troubleshooting
 ---
 
 # 멀티 인스턴스 환경에서 SSE 알림이 사라진 이유와 Redis Pub/Sub 도입기

@@ -51,17 +51,21 @@ focus_entries:
     desc: OS, concurrency, I/O model, 시스템 내부 동작
 
 topic_entries:
-  - title: Backend
-    url: /blog?category=backend
-    desc: Spring, Redis, Docker 같은 백엔드 기술과 설계, 데이터 처리, 트러블슈팅을 다룹니다.
+  - title: Troubleshooting
+    url: /blog?category=troubleshooting
+    desc: 예상과 다르게 동작한 문제를 로그와 코드로 추적하고 해결한 기록입니다.
 
-  - title: Infra
-    url: /blog?category=infra
-    desc: Linux, Docker, Nginx, Jenkins 같은 인프라 환경과 운영 경험을 정리합니다.
+  - title: Concept
+    url: /blog?category=concept
+    desc: OS, Redis, Database, Algorithm 같은 기술 개념을 학습하며 정리한 글입니다.
 
-  - title: System Programming
-    url: /blog?category=system-programming
-    desc: OS, concurrency, I/O model, thread, mutex, condition variable 같은 low-level 주제를 다룹니다.
+  - title: Architecture
+    url: /blog?category=architecture
+    desc: 프로젝트 구조, 이벤트 흐름, 시스템 설계와 의사결정을 정리한 글입니다.
+
+  - title: Retrospective
+    url: /blog?category=retrospective
+    desc: 프로젝트를 진행하며 얻은 배운 점과 의사결정 과정을 돌아본 글입니다.
 
 project_entries:
   - title: carryporter
