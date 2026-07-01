@@ -27,8 +27,8 @@ home_entries:
 featured_projects:
   - title: CarryPorter
     role: Backend Leader
-    desc: 실시간 로봇 호출 서비스의 이벤트 기반 배차 흐름과 동시성 제어를 설계했습니다.
-    tags: [Spring Boot, MQTT, Redis, Lua]
+    desc: Spring Event Listener와 @Async 기반 이벤트 아키텍처, Spring Integration 기반 MQTT Pipeline, Redis Pub/Sub 기반 SSE 알림 전파 구조를 구축했습니다.
+    tags: [Spring Event, Async, Spring Integration, Redis Pub/Sub]
 
   - title: Oh My Guide
     role: Infra Engineer

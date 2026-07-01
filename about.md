@@ -73,10 +73,10 @@ show_meta: false
       <span>2026.01 - 2026.02</span>
     </div>
     <ul>
-      <li>Backend Leader / 시스템 아키텍처 설계</li>
-      <li><code>@TransactionalEventListener</code> + <code>@Async</code> 적용으로 배차·알림 흐름 비동기 분리, 커넥션 점유 시간 단축 및 장애 영향 범위 축소</li>
-      <li>배차 큐 dequeue와 로봇 상태 변경을 <code>Lua Script</code>로 묶어 원자적 처리, 중간 실패 시 상태 불일치 방지</li>
-      <li>종료 후 요구사항 재분석으로 Redis 과설계 인식, DB 비관적 락 기반 리팩토링 진행 중</li>
+      <li>Backend Refactoring / 미션 상태 흐름 및 이벤트 구조 재설계</li>
+      <li><code>Spring Event Listener</code>와 <code>@Async</code>를 활용한 이벤트 기반 아키텍처 구축</li>
+      <li><code>Spring Integration</code> 기반 MQTT Pipeline 구축으로 inbound/outbound 메시지 처리 책임 분리</li>
+      <li><code>Redis Pub/Sub</code> 기반 SSE 알림 전파 구조 구축으로 멀티 인스턴스 환경 대응</li>
     </ul>
   </article>
 

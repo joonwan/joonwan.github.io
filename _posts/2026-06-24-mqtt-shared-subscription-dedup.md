@@ -1,12 +1,10 @@
 ---
 layout: post
+title: "MQTT 메시지가 멀티 인스턴스에서 두 번 처리된 이유"
 author: joonwan jeon
 tags: [spring, mqtt, mosquitto, deduplication, idempotency, scale-out, troubleshooting]
 category: troubleshooting
 ---
-
-# MQTT 메시지가 멀티 인스턴스에서 두 번 처리된 이유
-
 ## 문제를 만난 배경
 
 Spring Boot 인스턴스를 `app-1`, `app-2` 두 대로 실행한 뒤, 로봇이 발행한 MQTT 메시지가 서버에서 어떻게 처리되는지 확인하고 있었습니다.

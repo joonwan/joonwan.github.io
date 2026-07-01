@@ -1,12 +1,10 @@
 ---
 layout: post
+title: "멀티 인스턴스 환경에서 SSE 알림이 사라진 이유와 Redis Pub/Sub 도입기"
 author: joonwan jeon
 tags: [spring, sse, redis, pubsub, scale-out, troubleshooting]
 category: troubleshooting
 ---
-
-# 멀티 인스턴스 환경에서 SSE 알림이 사라진 이유와 Redis Pub/Sub 도입기
-
 ## 문제를 만난 배경
 
 SSE를 이용해 사용자에게 미션 진행 상태를 실시간으로 전달하고 있었습니다.
